@@ -5,4 +5,4 @@
 # Thus, it can be converted to 24-bit samples without losing anything.
 # S24BE format is supported by RTP so let's use that.
 
-exec ffmpeg -f alsa -acodec pcm_s32le -i hw:CARD=PCH,DEV=0    -f rtp -acodec pcm_s24be -sdp_file inputstream.sdp rtp://224.4.20.1:42001
+exec ffmpeg -f alsa -acodec pcm_s32le -i hw:CARD=PCH,DEV=0    -f rtp -acodec pcm_s24be -sdp_file inputstream.sdp rtp://224.4.20.1:42001?localaddr=127.0.0.1
