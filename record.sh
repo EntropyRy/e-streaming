@@ -1,6 +1,7 @@
 #!/bin/sh
-# Read audio from the multicast stream sent by input.sh
+# Read audio sent by input.sh
 # and record it to a file.
-# This is useful for testing the multicast stream.
 
-exec ffmpeg -protocol_whitelist file,udp,rtp -f sdp -i inputstream.sdp test_$(date +%s).wav
+ffmpeg \
+	-f s24be -ar 48000 -ac 2 -i zmq:tcp://127.0.0.1:42011 \
+	-acodec pcm_s24le test_$(date +%s).wav

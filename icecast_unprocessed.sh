@@ -1,5 +1,5 @@
 #!/bin/sh
-# Read audio from the multicast stream sent by input.sh
+# Read audio sent by input.sh
 # and send it to Icecast.
 
 # ICECAST_ADDRESS should be set like:
@@ -7,6 +7,8 @@
 . ./icecast_address.sh
 
 exec ffmpeg \
--protocol_whitelist file,udp,rtp -f sdp -i inputstream.sdp \
--f ogg -acodec flac -content_type application/ogg "icecast://${ICECAST_ADDRESS}/kerde_unprocessed.flac"
+	-f s24be -ar 48000 -ac 2 -i zmq:tcp://127.0.0.1:42011 \
+	-f ogg -acodec flac \
+	-content_type application/ogg \
+	"icecast://${ICECAST_ADDRESS}/kerde_unprocessed.flac"
 
