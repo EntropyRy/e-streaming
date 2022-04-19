@@ -3,15 +3,15 @@
 # and send it to Icecast.
 
 # ICECAST_ADDRESS should be set like:
-# ICECAST_ADDRESS=source:PASSWORD@ADDRESS:PORT
+# ICECAST_ADDRESS=source:PASSWORD@ADDRESS:PORT/name
 . ./icecast_address.sh
 
 while true
 do
 ffmpeg \
 	-f s24be -ar 48000 -ac 2 -i zmq:tcp://127.0.0.1:42012 \
-	-f ogg -acodec libopus -ab 160000 \
+	-f ogg -acodec libopus -ab 240000 \
 	-content_type application/ogg \
-	"icecast://${ICECAST_ADDRESS}/kerde.opus"
+	"icecast://${ICECAST_ADDRESS}.opus"
 done
 
