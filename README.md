@@ -27,7 +27,8 @@ If they didn't start at all, you might have to do:
 
     systemctl --user start default.target
 
-To start streaming, do:
+To start or stop streaming, do:
 
-    systemctl --user start es_stream.target
+    systemctl --user start es_streaming.target
+    systemctl --user stop es_streaming.target
 
