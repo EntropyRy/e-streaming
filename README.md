@@ -27,6 +27,11 @@ If they didn't start at all, you might have to do:
 
     systemctl --user start default.target
 
+To make it start on boot:
+
+    # assuming stream is the username running this
+    sudo loginctl enable-linger stream
+
 To start or stop streaming, do:
 
     systemctl --user start es_streaming.target
