@@ -6,9 +6,9 @@ set -e
 # Services that can always be running
 SERVICES_BASE="input process"
 # Services that are started when streaming is on
-SERVICES_STREAMING="icecast_unprocessed icecast_unprocessed_opus icecast_opus icecast_mp3 record"
+SERVICES_STREAMING="icecast_unprocessed icecast_unprocessed_opus icecast_opus icecast_mp3 icecast_aac record"
 # Services to be enabled
-SERVICES_ENABLED="${SERVICES_BASE} icecast_unprocessed icecast_opus"
+SERVICES_ENABLED="${SERVICES_BASE} icecast_unprocessed icecast_opus icecast_mp3"
 
 ############################# Paths #########################################
 

@@ -8,11 +8,11 @@ while true
 do
 ffmpeg \
 	-f s24be -ar 48000 -ac 2 -i zmq:tcp://127.0.0.1:42012 \
-	-f mp3 -acodec libmp3lame -ab 320000 \
-	-content_type audio/mpeg \
-	-ice_name "Clubroom stream (mp3)" \
+	-f mp3 -acodec libmp3lame -ab 160000 \
+	-content_type audio/aac \
+	-ice_name "Clubroom stream (aac)" \
 	-ice_description "Alternative for old phones that don't support the Opus codec" \
-	"icecast://${ICECAST_ADDRESS}.mp3" \
+	"icecast://${ICECAST_ADDRESS}.aac" \
 
 done
 
