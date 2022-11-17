@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Exec=journalctl --user -u es_input.service
+Icon=jo
+Icon[en_US]=jo
+Name[en_US]=Check soundcard log
+Name=Check soundcard log

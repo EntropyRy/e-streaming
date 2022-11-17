@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=systemctl --user restart es_base.target
+Icon=system
+Icon[en_US]=system
+Name[en_US]=Restart soundcard and processing
+Name=Start streaming
