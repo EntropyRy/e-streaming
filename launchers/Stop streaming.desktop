@@ -1,9 +1,8 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
 Type=Application
-Terminal=false
+Terminal=true
 Exec=systemctl --user stop es_streaming.target
-Icon=system
-Icon[en_US]=system
-Name[en_US]=Stop streaming
-Name=Start streaming
+Icon=jo
+Name=Stop streaming

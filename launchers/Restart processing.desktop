@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Exec=systemctl --user restart es_processing.target
+Icon=jo
+Name=Restart processing
+GenericName=Do this after modifying processing settings

@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Exec=systemctl --user restart es_input.service
+Icon=jo
+Name=Restart soundcard input
+GenericName=Do this after connecting soundcard to the computer

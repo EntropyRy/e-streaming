@@ -1,9 +1,8 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
 Type=Application
-Terminal=false
-Exec=sh -c 'cd ~/e-streaming;./waveform.sh input'
-Icon=system
-Icon[en_US]=system
-Name[en_US]=Check level from soundcard
-Name=Start streaming
+Terminal=true
+Exec=sh -c 'cd ~/e-streaming && ./waveform.sh input'
+Icon=jo
+Name=Check level from soundcard
