@@ -60,25 +60,27 @@ def main(blocksize = 12000, threshold = 2000000, silence_time = 480):
             # There is sound
             silence_counter = 0
             stream_on = True
-            print('%10d sound' % (amplitude, ))
         elif silence_counter < silence_time:
             # There is silence but time has not been exceeded yet
             silence_counter += 1
             stream_on = True
-            print('%10d silence %5d' % (amplitude, silence_counter))
         else:
             # Silence time has been exceeded
             stream_on = False
-            print('%10d stopped' % (amplitude, ))
 
         if stream_on and (not stream_on_prev):
-            print('Starting')
             stream_start()
         elif (not stream_on) and stream_on_prev:
-            print('Stopping')
             stream_stop()
 
         stream_on_prev = stream_on
+
+def test_amplitude(blocksize = 12000):
+    """Alternative main loop for testing amplitude levels."""
+    audioin = AudioIn()
+    while True:
+        amplitude = read_amplitude(audioin, blocksize)
+        print('%10d' % amplitude, flush=True)
 
 if __name__ == '__main__':
     main()
