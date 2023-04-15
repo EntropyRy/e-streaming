@@ -4,7 +4,7 @@ set -e
 ############################# List of services ##############################
 
 # Services that can always be running
-SERVICES_BASE="input process"
+SERVICES_BASE="input process controller"
 # Services that are started when streaming is on
 SERVICES_STREAMING="icecast_unprocessed icecast_unprocessed_opus icecast_opus icecast_mp3 icecast_aac record"
 # Services to be enabled
