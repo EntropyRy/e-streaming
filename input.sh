@@ -6,6 +6,8 @@
 # TODO: Check if above is true for the DGX soundcard as well.
 # At least it supports the same formats.
 
+. ./common.sh
+
 exec ffmpeg \
 	-f alsa -acodec pcm_s32le -i hw:CARD=DGX,DEV=0 \
-	-f s24be zmq:tcp://*:42011
+	$PUB_INPUT

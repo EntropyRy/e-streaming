@@ -2,12 +2,13 @@
 # Read audio sent by input.sh
 # and send it to Icecast.
 
+. ./common.sh
 . ./icecast_address.sh
 
 while true
 do
 ffmpeg \
-	-f s24be -ar 48000 -ac 2 -i zmq:tcp://127.0.0.1:42011 \
+	$SUB_INPUT \
 	-f ogg -acodec flac \
 	-content_type application/ogg \
 	-ice_name "Clubroom stream (unprocessed)" \
