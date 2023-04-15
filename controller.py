@@ -47,6 +47,13 @@ def read_amplitude(audioin, n):
         blocks_read += 1
     return accumulator // blocks_read
 
+def check_streaming_enabled():
+    try:
+        with open('streaming_enabled', 'r') as f:
+            return int(f.read()) != 0
+    except:
+        return False
+
 def main(blocksize = 12000, threshold = 2000000, silence_time = 480):
     audioin = AudioIn()
     # Start counter from silence_time to avoid unnecessarily
@@ -59,14 +66,17 @@ def main(blocksize = 12000, threshold = 2000000, silence_time = 480):
         if amplitude >= threshold:
             # There is sound
             silence_counter = 0
-            stream_on = True
+            sound_ok = True
         elif silence_counter < silence_time:
             # There is silence but time has not been exceeded yet
             silence_counter += 1
-            stream_on = True
+            sound_ok = True
         else:
             # Silence time has been exceeded
-            stream_on = False
+            sound_ok = False
+
+        streaming_enabled = check_streaming_enabled()
+        stream_on = sound_ok and streaming_enabled
 
         if stream_on and (not stream_on_prev):
             stream_start()
