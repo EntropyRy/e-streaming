@@ -54,14 +54,21 @@ def check_streaming_enabled():
     except:
         return False
 
-def main(blocksize = 12000, threshold = 2000000, silence_time = 480):
+def main(blocksize = 12000, threshold = 2000000, silence_time = 1200):
     audioin = AudioIn()
     # Start counter from silence_time to avoid unnecessarily
     # starting stream when the script is started.
     silence_counter = silence_time
+    streaming_enabled_prev = False
     stream_on_prev = False
     running = True
     while running:
+        streaming_enabled = check_streaming_enabled()
+        # If streaming was just enabled, reset the silence counter
+        # so that streaming can start even if there is silence.
+        if streaming_enabled and (not streaming_enabled_prev):
+            silence_counter = 0
+
         amplitude = read_amplitude(audioin, blocksize)
         if amplitude >= threshold:
             # There is sound
@@ -75,7 +82,6 @@ def main(blocksize = 12000, threshold = 2000000, silence_time = 480):
             # Silence time has been exceeded
             sound_ok = False
 
-        streaming_enabled = check_streaming_enabled()
         stream_on = sound_ok and streaming_enabled
 
         if stream_on and (not stream_on_prev):
@@ -84,6 +90,7 @@ def main(blocksize = 12000, threshold = 2000000, silence_time = 480):
             stream_stop()
 
         stream_on_prev = stream_on
+        streaming_enabled_prev = streaming_enabled
 
 def test_amplitude(blocksize = 12000):
     """Alternative main loop for testing amplitude levels."""
