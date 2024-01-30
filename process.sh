@@ -5,7 +5,7 @@
 
 . ./common.sh
 
-level_in=40
+level_in=20
 ffmpeg \
 	$SUB_INPUT \
 	-filter "alimiter=level_in=${level_in}:limit=0.95" \
