@@ -8,6 +8,7 @@
 while true
 do
 ffmpeg \
+	-nostats \
 	$SUB_INPUT \
 	-f ogg -acodec libopus -ab 256000 \
 	-content_type application/ogg \

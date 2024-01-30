@@ -8,6 +8,7 @@
 while true
 do
 ffmpeg \
+	-nostats \
 	$SUB_INPUT \
 	-f ogg -acodec flac \
 	-content_type application/ogg \

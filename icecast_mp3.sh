@@ -8,6 +8,7 @@
 while true
 do
 ffmpeg \
+	-nostats \
 	$SUB_PROCESSED \
 	-f mp3 -acodec libmp3lame -ab 320000 \
 	-content_type audio/mpeg \
